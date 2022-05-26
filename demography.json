@@ -1,0 +1,342 @@
+[
+  {
+    "full_description": "no_of_houeholds",
+    "short_form": "No_HH"
+  },
+  {
+    "full_description": "total_population",
+    "short_form": "TOT_P"
+  },
+  {
+    "full_description": "total_males",
+    "short_form": "TOT_M"
+  },
+  {
+    "full_description": "total_females",
+    "short_form": "TOT_F"
+  },
+  {
+    "full_description": "population_age_group_0-6",
+    "short_form": "P_06"
+  },
+  {
+    "full_description": "Males_0-6",
+    "short_form": "M_06"
+  },
+  {
+    "full_description": "Females_0-6",
+    "short_form": "F_06"
+  },
+  {
+    "full_description": "population_sc",
+    "short_form": "P_SC"
+  },
+  {
+    "full_description": "males_sc",
+    "short_form": "M_SC"
+  },
+  {
+    "full_description": "females_sc",
+    "short_form": "F_SC"
+  },
+  {
+    "full_description": "pop_st",
+    "short_form": "P_ST"
+  },
+  {
+    "full_description": "males_st",
+    "short_form": "M_ST"
+  },
+  {
+    "full_description": "females_st",
+    "short_form": "F_ST"
+  },
+  {
+    "full_description": "population_literate",
+    "short_form": "P_LIT"
+  },
+  {
+    "full_description": "males_literate",
+    "short_form": "M_LIT"
+  },
+  {
+    "full_description": "females_lierate",
+    "short_form": "F_LIT"
+  },
+  {
+    "full_description": "pop_illiterate",
+    "short_form": "P_ILL"
+  },
+  {
+    "full_description": "males_illiterate",
+    "short_form": "M_ILL"
+  },
+  {
+    "full_description": "females_illiterate",
+    "short_form": "F_ILL"
+  },
+  {
+    "full_description": "total_workers_pop",
+    "short_form": "TOT_WORK_P"
+  },
+  {
+    "full_description": "total_workers_males",
+    "short_form": "TOT_WORK_M"
+  },
+  {
+    "full_description": "total_workers_females",
+    "short_form": "TOT_WORK_F"
+  },
+  {
+    "full_description": "mainworkers_population",
+    "short_form": "MAINWORK_P"
+  },
+  {
+    "full_description": "mainworkers_males",
+    "short_form": "MAINWORK_M"
+  },
+  {
+    "full_description": "mainworkers_females",
+    "short_form": "MAINWORK_F"
+  },
+  {
+    "full_description": "main_cultivators_population",
+    "short_form": "MAIN_CL_P"
+  },
+  {
+    "full_description": "main_cultivators_males",
+    "short_form": "MAIN_CL_M"
+  },
+  {
+    "full_description": "main_cultivators_females",
+    "short_form": "MAIN_CL_F"
+  },
+  {
+    "full_description": "main_agricultural_leighbourers_population",
+    "short_form": "MAIN_AL_P"
+  },
+  {
+    "full_description": "main_agricultural_leighbourers_population_males",
+    "short_form": "MAIN_AL_M"
+  },
+  {
+    "full_description": "main_agricultural_leighbourers_population_females",
+    "short_form": "MAIN_AL_F"
+  },
+  {
+    "full_description": "main_household_industries_population",
+    "short_form": "MAIN_HH_P"
+  },
+  {
+    "full_description": "main_household_industries_population_males",
+    "short_form": "MAIN_HH_M"
+  },
+  {
+    "full_description": "main_household_industries_population_females",
+    "short_form": "MAIN_HH_F"
+  },
+  {
+    "full_description": "main_other_workers_population",
+    "short_form": "MAIN_OT_P"
+  },
+  {
+    "full_description": "main_other_workers_males",
+    "short_form": "MAIN_OT_M"
+  },
+  {
+    "full_description": "main_other_workers_females",
+    "short_form": "MAIN_OT_F"
+  },
+  {
+    "full_description": "marginal_workers_population",
+    "short_form": "MARGWORK_P"
+  },
+  {
+    "full_description": "marginal_workers_males",
+    "short_form": "MARGWORK_M"
+  },
+  {
+    "full_description": "marginal_workers_females",
+    "short_form": "MARGWORK_F"
+  },
+  {
+    "full_description": "marginal_cultivators_pop",
+    "short_form": "MARG_CL_P"
+  },
+  {
+    "full_description": "marginal_cultivators_males",
+    "short_form": "MARG_CL_M"
+  },
+  {
+    "full_description": "marginal_cultivators_females",
+    "short_form": "MARG_CL_F"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_pop",
+    "short_form": "MARG_AL_P"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_males",
+    "short_form": "MARG_AL_M"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_females",
+    "short_form": "MARG_AL_F"
+  },
+  {
+    "full_description": "marginal_household_industries_pop",
+    "short_form": "MARG_HH_P"
+  },
+  {
+    "full_description": "marginal_household_industries_males",
+    "short_form": "MARG_HH_M"
+  },
+  {
+    "full_description": "marginal_household_industries_females",
+    "short_form": "MARG_HH_F"
+  },
+  {
+    "full_description": "marginal_other_workers_population",
+    "short_form": "MARG_OT_P"
+  },
+  {
+    "full_description": "marginal_other_workers_males",
+    "short_form": "MARG_OT_M"
+  },
+  {
+    "full_description": "marginal_other_workers_females",
+    "short_form": "MARG_OT_F"
+  },
+  {
+    "full_description": "marginal_workers_population_3-6",
+    "short_form": "MARGWORK_3"
+  },
+  {
+    "full_description": "marginal_workers_males_3-6",
+    "short_form": "MARGWORK_1"
+  },
+  {
+    "full_description": "marginal_workers_females_3-6",
+    "short_form": "MARGWORK_2"
+  },
+  {
+    "full_description": "marginal_cultivators_pop_3-6",
+    "short_form": "MARG_CL_3_"
+  },
+  {
+    "full_description": "marginal_cultivators_males_3-6",
+    "short_form": "MARG_CL__1"
+  },
+  {
+    "full_description": "marginal_cultivators_females_3-6",
+    "short_form": "MARG_CL__2"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_population_3-6",
+    "short_form": "MARG_AL_3_"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_males_3-6",
+    "short_form": "MARG_AL__1"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_females_3-6",
+    "short_form": "MARG_AL__2"
+  },
+  {
+    "full_description": "marginal_household_industries_3-6",
+    "short_form": "MARG_HH_3_"
+  },
+  {
+    "full_description": "marginal_household_industries_males_3-6",
+    "short_form": "MARG_HH__1"
+  },
+  {
+    "full_description": "marginal_household_industries_females_3-6",
+    "short_form": "MARG_HH__2"
+  },
+  {
+    "full_description": "marginal_other_workers_population_3-6",
+    "short_form": "MARG_OT_3_"
+  },
+  {
+    "full_description": "marginal_other_workers_males_3-6",
+    "short_form": "MARG_OT__1"
+  },
+  {
+    "full_description": "marginal_other_workers_females_3-6",
+    "short_form": "MARG_OT__2"
+  },
+  {
+    "full_description": "marginal_workers_population_0-3",
+    "short_form": "MARGWORK_0"
+  },
+  {
+    "full_description": "marginal_workers_males_0-3",
+    "short_form": "MARGWORK_4"
+  },
+  {
+    "full_description": "marginal_workers_females_0-3",
+    "short_form": "MARGWORK_5"
+  },
+  {
+    "full_description": "marginal_cultivators_pop_0-3",
+    "short_form": "MARG_CL_0_"
+  },
+  {
+    "full_description": "marginal_cultivators_males_0-3",
+    "short_form": "MARG_CL__3"
+  },
+  {
+    "full_description": "marginal_cultivators_females_0-3",
+    "short_form": "MARG_CL__4"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_population_0-3",
+    "short_form": "MARG_AL_0_"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_population_0-3",
+    "short_form": "MARG_AL__3"
+  },
+  {
+    "full_description": "marginal_agricult_leighbourers_population_0-3",
+    "short_form": "MARG_AL__4"
+  },
+  {
+    "full_description": "marginal_household_industries_0-3",
+    "short_form": "MARG_HH_0_"
+  },
+  {
+    "full_description": "marginal_household_industries_males_0-3",
+    "short_form": "MARG_HH__3"
+  },
+  {
+    "full_description": "marginal_household_industries_females_0-3",
+    "short_form": "MARG_HH__4"
+  },
+  {
+    "full_description": "marginal_other_workers_population_0-3",
+    "short_form": "MARG_OT_0_"
+  },
+  {
+    "full_description": "marginal_other_workers_males_0-3",
+    "short_form": "MARG_OT__3"
+  },
+  {
+    "full_description": "marginal_other_workers_females_0-3",
+    "short_form": "MARG_OT__4"
+  },
+  {
+    "full_description": "non_workers_population",
+    "short_form": "NON_WORK_P"
+  },
+  {
+    "full_description": "non_workers_males",
+    "short_form": "NON_WORK_M"
+  },
+  {
+    "full_description": "non_workers_females",
+    "short_form": "NON_WORK_F"
+  }
+]
