@@ -1,9 +1,5 @@
 [
   {
-    "full_description": "state code",
-    "short_form": "state_code"
-  },
-  {
     "full_description": "number of households with condition of census house as total as total",
     "short_form": "hh_tot_tot"
   },
