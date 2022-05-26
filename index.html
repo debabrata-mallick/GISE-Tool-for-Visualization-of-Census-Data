@@ -61,6 +61,26 @@ right: -7px;
 .btn:hover {
   background-color: RoyalBlue;
 }
+
+
+table {
+    table-layout: auto;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 95%;
+  
+}
+table.fixed { table-layout:fixed; }
+table.fixed td { overflow: hidden; }
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>
 </head>
 <body>
@@ -150,14 +170,15 @@ right: -7px;
                         
                     </P>
 
-                    <h2 style="color: black; margin: 1.7cm;" align="left";>
+                    <h2 style="color: rgb(37, 40, 187); margin: 1.7cm;" align="left";>
                         <b>
-                            Table Description:
-                        </b>  Bellows are the name of the given table and their main key attribute of those tables.
+                            Table Description and Attributes:
+                        </b>  
 
                     </h2>
 
-                    <b style="font-size: 18px;">
+                    <!-- <b style="font-size: 18px;">
+
 
                         <br> 1. Demographics Primary Census Data of Maharashtra        
                         <br> <b  style="margin: 1cm; font-size: 23px;">Key Attributes: "Town/Village Census Code"</b>
@@ -173,46 +194,542 @@ right: -7px;
                         <br> <b  style="margin: 1cm; font-size: 23px;">Key Attributes: "Town Code/Village code"  </b>
                 
                 
-                    </b>
+                    </b> -->
 
-                    
-                                        
-                    <P>
-                        <b>
-                            
-                        </b>
-                    </P>
+                    <h2>Demographics Primary Census Data of Maharashtra</h2>
+<h4>Key Attributes is: Town/Village Census Code,   Taluka Census Code and   District Census Code
 
-                    <P>
-                        <b>
-                            
-                        </b>
-                    </P>
+</h4>
 
-                    <P>
-                        <b>
-                            
-                        </b>
-                    </P>
-                    
+<table class="fixed">
+    <col width="5px" />
+    <col width="13px" />
+    <col width="44px" />
+  <tr>
+    <th>Main Attributes</th>
+    <th>Attributes</th>
+    <th>Bottom Attributes</th>
+  </tr>
+ 
+  <tr>
+      <td>
+        Population
+       
+      </td>
+      <td>
+        Population, <br>
+        Population (0-6 yrs.),<br>
+        Population (SC),<br>
+        Population (ST),<br>
+        Population Literate,<br>
+        Population Illiiterate,<br>
 
+      </td>
+      <td>
+        no_of_houeholds,
+        total_population,
+        total_males,
+        total_females,<br>
+        population_age_group_0-6,
+        Males_0-6,
+        Females_0-6,<br>
+        population_sc,
+        males_sc,
+        females_sc,<br>
+        pop_st,
+        males_st,
+        females_st,<br>
+        population_literate,
+        males_literate,
+        females_lierate,<br>
+        pop_illiterate,
+        males_illiterate,
+        females_illiterate
+
+      </td>
+  </tr>
+
+  <tr>
+      <td>
+        Workers Population
+      </td>
+      <td>
+        Workers Population
+      </td>
+      <td>
+        total_workers_pop,
+total_workers_males,
+total_workers_females
+      </td>
+  </tr>
+  <tr>
+    <td>
+        Main workering Population
+    </td>
+    <td>
+        Main workers Population,<br>
+        Main Cultivators Population,<br>
+        Main Agricultural Leighbourers Population,<br>
+        Main Households Industries Population,<br>
+        Main Other Worker Population,
+    </td>
+    <td>
+        mainworkers_population,
+mainworkers_males,
+mainworkers_females,<br>
+main_cultivators_population,
+main_cultivators_males,
+main_cultivators_females,<br>
+main_agricultural_leighbourers_population,
+main_agricultural_leighbourers_population_males,
+main_agricultural_leighbourers_population_females,<br>
+main_household_industries_population,
+main_household_industries_population_males,
+main_household_industries_population_females,<br>
+main_other_workers_population,
+main_other_workers_males,
+main_other_workers_females
+    </td>
+</tr>  <tr>
+    <td>
+        Marginal workering Population
+    </td>
+    <td>
+        Marginal workers Population,<br>
+        Marginal Cultivators Population,<br>
+        Marginal Agricultural Leighbourers Population,<br>
+        Marginal Households Industries Population,<br>
+        Marginal Other Worker Population
+    </td>
+    <td>
+        marginal_workers_population,
+        marginal_workers_males,
+        marginal_workers_females,<br>
+        marginal_cultivators_pop,
+        marginal_cultivators_males,
+        marginal_cultivators_females,<br>
+        marginal_agricult_leighbourers_pop,
+        marginal_agricult_leighbourers_males,
+        marginal_agricult_leighbourers_females,<br>
+        marginal_household_industries_pop,
+        marginal_household_industries_males,
+        marginal_household_industries_females,<br>
+        marginal_other_workers_population,
+        marginal_other_workers_males,
+        marginal_other_workers_females
+    </td>
+</tr>  <tr>
+    <td>
+        Marginal workering Population 3-6
+    </td>
+    <td>
+        Marginal workers Population 3-6,<br>
+        Marginal Cultivators Population 3-6,<br>
+        Marginal Agricultural Leighbourers Population 3-6,<br>
+        Marginal Households Industries Population 3-6,<br>
+        Marginal Other Worker Population 3-6
+    </td>
+    <td>
+        marginal_workers_population_3-6,
+marginal_workers_males_3-6,
+marginal_workers_females_3-6,<br>
+marginal_cultivators_pop_3-6,
+marginal_cultivators_males_3-6,
+marginal_cultivators_females_3-6,<br>
+marginal_agricult_leighbourers_population_3-6,
+marginal_agricult_leighbourers_males_3-6,
+marginal_agricult_leighbourers_females_3-6,<br>
+marginal_household_industries_3-6,
+marginal_household_industries_males_3-6,
+marginal_household_industries_females_3-6,<br>
+marginal_other_workers_population_3-6,
+marginal_other_workers_males_3-6,
+marginal_other_workers_females_3-6
+    </td>
+</tr>  <tr>
+    <td>
+        Marginal workering Population 0-3
+    </td>
+    <td>
+        Marginal workers Population 0-3,<br>
+        Marginal Cultivators Population 0-3,<br>
+        Marginal Agricultural Leighbourers Population 0-3,<br>
+        Marginal Households Industries Population 0-3,<br>
+        Marginal Other Worker Population 0-3
+    </td>
+    <td>
+        marginal_workers_population_0-3,
+marginal_workers_males_0-3,
+marginal_workers_females_0-3,<br>
+marginal_cultivators_pop_0-3,
+marginal_cultivators_males_0-3,
+marginal_cultivators_females_0-3,<br>
+marginal_agricult_leighbourers_population_0-3,
+marginal_agricult_leighbourers_population_male_0-3,
+marginal_agricult_leighbourers_population_female_0-3,<br>
+marginal_household_industries_0-3,
+marginal_household_industries_males_0-3,
+marginal_household_industries_females_0-3,<br>
+marginal_other_workers_population_0-3,
+marginal_other_workers_males_0-3,
+marginal_other_workers_females_0-3
+    </td>
+</tr>  <tr>
+    <td >
+        Non Workers Population 
+    </td>
+    <td>
+        Non Workers Population
+    </td>
+    <td>
+        non_workers_population,
+non_workers_males,
+non_workers_females
+    </td>
+</tr>
+
+
+</table>
+
+
+<h2>Percentage of Households to Total Households by Amenities and Assets of Maharashtra</h2>
+For households, we have three tables, and all of them have the exact attributes. Only the difference is that for scheduled caste and scheduled tribes, we have taluka level data, and for general, we have village-level data; moreover, for this below, adding only one table to identify their key attributes, main attributes, sub-attributes, and bottom attributes.
+<h4>For Scheduled Caste and Scheduled Tribes Key Attributes is: Tehsil Code (Total, Rural, Urban) and   District Census Code <br>
+    For General Key Attributes is: Town Code/Village code, Tehsil Code (Total, Rural, Urban) and   District Census Code 
+
+</h4>
+ 
+
+<table class="fixed">
+    <col width="5px" />
+    <col width="8px" />
+    <col width="44px" />
+  <tr>
+    <th>Main Attributes</th>
+    <th>Attributes</th>
+    <th>Bottom Attributes</th>
+  </tr>
+ 
+  <tr>
+      <td>
+        Households condition of Census House
+       
+      </td>
+      <td>
+        Number of households with condition of Census House as, <br>
+        Material of Roof,<br>
+        Material of Wall,<br>
+        Material of Floor,<br>
+        Number of Dwelling Rooms,<br>
+        Number of Dwelling Rooms, <br>
+        Household size,<br>
+        Ownership status
+
+
+
+      </td>
+      <td>
+        number of households with condition of census house as total as total,
+        number of households with condition of census house as total as good,
+        number of households with condition of census house as total as livable,
+        number of households with condition of census house as total as dilapidated,
+        residence total,
+        residence is good,
+        residence is livable,
+        residence is dilapidated,
+        residence-cum-other use tota,
+        residence-cum-other use is good,
+        residence-cum-other use is livable,
+        residence-cum-other use is dilapidated,<br>
+        material of roof grass/ thatch/ bamboo/ wood/mud etc.,
+material of roof plastic/ polythene,
+material of roof hand made tiles,
+material of roof machine made tiles,
+material of roof burnt brick,
+material of roof stone/ slate,
+material of roof g.i./metal/ asbestos sheets,
+material of roof concrete,
+material of roof any other material, <br>
+material of wall grass/ thatch/ bamboo etc.,
+material of wall plastic/ polythene,
+material of wall mud/unburnt brick,
+material of wall wood,
+material of wall stone not packed with mortar,
+material of wall stone packed with mortar,
+material of wall g.i./ metal/ asbestos sheets,
+material of wall burnt brick,
+material of wall concrete,
+material of wall any other material,<br>
+material of floor mud,
+material of floor wood/ bamboo,
+material of floor burnt brick,
+material of floor stone,
+material of floor cement,
+material of floor mosaic/ floor tiles,
+material of floor any other material,<br>
+
+number of dwelling rooms no exclusive room,
+number of dwelling rooms one room,
+number of dwelling rooms two rooms,
+number of dwelling rooms three rooms,
+number of dwelling rooms four rooms,
+number of dwelling rooms five rooms,
+number of dwelling rooms six rooms and above,<br>
+household size '1,
+household size '2,
+household size '3,
+household size '4,
+household size '5,
+household size '6-8,
+household size '9+,<br>
+
+ownership status owned,
+ownership status rented,
+ownership status any others,<br>
+
+      </td>
+  </tr>
+
+  <tr>
+      <td>
+        Married couple
+      </td>
+      <td>
+        Married couple
+      </td>
+      <td>
+        married couple none,
+        married couple '1,
+        married couple '2,
+        married couple '3,
+        married couple '4,
+        married couple '5+
+      </td>
+  </tr>
+  <tr>
+    <td>
+        Drinking Water
+    </td>
+    <td>
+        Main Source of Drinking Water,<br>
+        Location of drinking water source<br>
+
+    </td>
+    <td>
+        main source of drinking water tapwater from treated source,
+        main source of drinking water tapwater from un-treated source,
+        main source of drinking water covered well,
+        main source of drinking water un-covered well,
+        main source of drinking water handpump,
+        main source of drinking water tubewell/borehole,
+        main source of drinking water spring,
+        main source of drinking water river/canal,
+        main source of drinking water tank/pond/lake,
+        main source of drinking water other sources,<br>
+        location of drinking water source within premises,
+location of drinking water source near premises,
+location of drinking water source away,<br>
+
+
+    </td>
+</tr> 
+
+<tr>
+    <td>
+        Main Source of lighting	
+    </td>
+    <td>
+        Main Source of lighting	
+    </td>
+    <td>
+        main source of lighting electricity,
+main source of lighting kerosene,
+main source of lighting solar energy,
+main source of lighting other oil,
+main source of lighting any other,
+main source of lighting no lighting
+    </td>
+</tr>  <tr>
+    <td>
+        Latrine facility
+    </td>
+    <td>
+        Number of households having latrine facility within the premises,<br>
+        Flush/pour flush latrine connected to,<br>
+        Pit latrine,<br>
+        Night soil disposed into open drain,<br>
+        Service Latrine,<br>
+        Number of households not having latrine facility within the premises,<br>
+        Alternative source
+
+    </td>
+    <td>
+        number of households having latrine facility within the premises,<br>
+marginal_cultivators_pop_3-6,
+marginal_cultivators_males_3-6,
+marginal_cultivators_females_3-6,<br>
+flush/pour flush latrine connected to piped sewer system,
+flush/pour flush latrine connected to septic tank,
+flush/pour flush latrine connected to other system,<br>
+pit latrine with slab/ventilated improved pit,
+pit latrine without slab/ open pit,<br>
+"night soil disposed into open drain,<br>
+alternative source public latrine,
+alternative source open
+
+    </td>
+</tr>  
+
+<tr>
+    <td>
+        Bathing facility
+
+    </td>
+    <td>
+       
+        Number of households having bathing facility within the premises, <br>
+        Waste water outlet connected to, <br>
+        
+        
+    </td>
+    <td>
+        number of households having bathing facility within the premises yes bathroom,
+number of households having bathing facility within the premises enclosure without roof,
+number of households having bathing facility within the premises no,<br>
+waste water outlet connected to closed drainage,
+waste water outlet connected to open drainage,
+waste water outlet connected to no drainage
+
+    </td>
+</tr>  
+
+
+
+
+<tr>
+    <td >
+        Coocking
+    </td>
+    <td>
+        Type of Fuel used for Cooking,<br>
+        Kitchen Facility
+    </td>
+    <td>
+        type of fuel used for cooking fire-wood,
+type of fuel used for cooking crop residue,
+type of fuel used for cooking cowdung cake,
+type of fuel used for cooking coal,lignite,charcoal,
+type of fuel used for cooking kerosene,
+type of fuel used for cooking lpg/png,
+type of fuel used for cooking electricity,
+type of fuel used for cooking biogas,
+type of fuel used for cooking any other,
+type of fuel used for cooking no cooking,<br>
+kitchen facility cooking inside house:,
+kitchen facility has kitchen,
+kitchen facility does not have kitchen,
+kitchen facility cooking outside house:,
+kitchen facility has kitchen,
+kitchen facility does not have kitchen,
+kitchen facility no cooking
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Total number of households availing banking services	
+
+    </td>
+    <td>
+       
+        Total number of households availing banking services	
+    </td>
+    <td>
+        
+        total number of households availing banking services Number use bank
+    </td>
+</tr>  
+
+
+
+
+<tr>
+    <td>
+       
+        Availability of assets
+    </td>
+    <td>
+        Availability of assets
+
+    </td>
+    <td>
+        
+        availability of assets radio/transistor,
+        availability of assets television,
+        availability of assets computer/laptop with internet,
+        availability of assets without internet,
+        availability of assets telephone/mobile phone landline only,
+        availability of assets mobile only,
+        availability of assets both,
+        availability of assets bicycle,
+        availability of assets scooter/ motorcycle/moped,
+        availability of assets car/ jeep/van,
+        availability of assets households with tv, computer/laptop, telephone/mobile phone and scooter/ car,
+        availability of assets none of the assets specified in col. 10 to 19
+    </td>
+</tr>  
+
+
+
+
+<tr>
+    <td>
+       
+        Type of Census Houses
+    </td>
+    <td>
+        Type of Census Houses
+
+    </td>
+    <td>
+        households by type of structure of census houses permanent,
+households by type of structure of census houses semi-permanent,
+households by type of structure of census houses total temporary,
+households by type of structure of census houses serviceable,
+households by type of structure of census houses non-serviceable
+
+    </td>
+</tr>  
+<tr>
+    <td>
+       
+        Unclassifiable	
+    </td>
+    <td>
+        Unclassifiable	
+    </td>
+    <td>
+        households by type of structure of census houses unclassifiable
+
+    </td>
+</tr>  
+
+
+</table>
+          
            
+
+
+
+
 
 
     </center>
   </div>
 </div>
 
-
-
     </style>
-
-
-
-
-
-
-
     
-</head>
+</head> 
 </html>
