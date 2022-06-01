@@ -90,7 +90,7 @@ right: -7px;
   top: 0;
   bottom: 0;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .full-height {
   height: 100%;
@@ -129,12 +129,12 @@ box-shadow: none;
 
 
     <!-- test -->
-    <div class="container-fluid full-height" style="height:100; overflow-y: auto ; background-color: rgba(222, 229, 247, 0.163);">
+    <div class="container-fluid full-height">
         <!-- <div class="row header bg-primary"></div> -->
-      <div class="row h-100" >
+      <div class="row h-100">
         <div class="col-3">
-            <div class="row h-100" >
-                <div class="col" style="height:570px; overflow-y: auto ; background-color: rgba(222, 229, 247, 0.163);">
+            <div class="row h-100" style="background-color: rgba(137, 210, 133, 0.163);">
+                <div class="col" style="background-color: rgba(255, 94, 0, 0.205); overflow-y: scroll;">
                     <!-- <div class="row h-25  text-center 0-5"></div> -->
                         <div class="row  text-center mt-5">
                         <div>
@@ -202,8 +202,26 @@ box-shadow: none;
                     <div class="row  text-center" > 
                         <div id="show-range"> Range</div>
 
-                        <!-- <div id="show-selected-attribute"> Selected Attribute</div> -->
+                        <div id="show-selected-attribute"> Selected Attribute</div>
                        
+                    </div>
+                    <div style="text-align: center;"> 
+                        Select operator
+                        <select id="op">
+                            <option value=">">></option>
+                            <option value="<"><</option>
+                            <option value="<="><=</option>
+                            <option value=">=">>=</option>
+                            <!-- <option value="<>"><></option> -->
+                        </select>
+                        <br>
+                        <label >Select Value:</label>
+                        <input type="number" id="variable" name="variable">
+                        <br>
+                        <label for="">Select color:</label>
+                        <input type="color" id="color" name="color" value="#ff0000">
+                        <br>
+                        <button onclick="executequery()">Execute query</button>
                     </div>
 
 
@@ -213,19 +231,12 @@ box-shadow: none;
           </div>
         </div>
         <div class="col-9 bg-secondary">
-          <div class='row h-100' id="map" ></div>
+          <div class='row h-100' id="map"></div>
           
         </div>
        
       </div>
     </div>
-    <!-- <p style="font-size:20px; color: rgb(58, 1, 1);" align="justify">
-        <b style="margin: 1.5cm;"> In bellow, we can see the Maharashtra district and taluka level filter data integrated with the geospatial vector data format (SHP) file. 
-            From the below Maharashtra district and taluka level map. 
-            We can download the original data set and load them into QGIS quickly or just can download the CSV file(please click on the below given button to see the Map view).
-    
-        </b> 
-    </p> -->
 </body>
 <script>
     var map; 
@@ -244,23 +255,38 @@ box-shadow: none;
    let url = "https://gisehub.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Households_District_Level_Census_0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326"
    let currentData = null;
    let selectedAttribute;
+
+   var operators = {
+        '>': function(a, b){ if(a>b) return true;else return false},
+        '<': function(a, b){ if(a<b) return true;else return false},
+        '>=': function(a, b){ if(a>=b) return true;else return false},
+        '<=': function(a, b){ if(a<=b) return true;else return false}
+}
+
    function fetchData(myurl){
     // map.spin(true,{lines: 9, length: 2, width: 20, scale: 60,radius: 70, color: "grey"});
+    let variable = document.getElementById("variable");
+        variable.value = ""
     fetch(myurl)
         .then(response => response.json())
         .then(data => {
-            console.log(selectedAttribute)
             if(typeof selectedAttribute === 'undefined')
                 selectedAttribute = Object.keys(data.features[0].properties)[0] //random attribute name
-                console.log(Object.keys(data.features[0].properties))
 
             currentData = data;
-            renderLayer(data,selectedAttribute)});
+            renderLayer(data,selectedAttribute,'>',0,"grey")});
     // map.spin(false);
 
    }
 
-   function renderLayer(data,selectedAttribute){
+   function executequery(){
+        let op = document.getElementById('op').value
+        let colr = document.getElementById('color').value
+        let variable= document.getElementById('variable').value
+        renderLayer(currentData,selectedAttribute,op,variable,colr)
+}
+
+   function renderLayer(data,selectedAttribute,op,variable,colorvalue){
     if(activatedLayer){
         map.removeLayer(activatedLayer);
         
@@ -272,16 +298,29 @@ box-shadow: none;
     }
     let range = getRange(data.features)
     document.getElementById("show-range").innerHTML = "Range: "+range[0] + "-" +range[1];
-    // document.getElementById("show-selected-attribute").innerHTML = "Selected Attribute:" + selectedAttribute;
+    document.getElementById("show-selected-attribute").innerHTML = "Selected Attribute:" + selectedAttribute;
 
 
-    var color_sequential = d3.scaleSequential(d3.interpolateGreens).domain(range);
+    // var color_sequential = d3.scaleSequential(d3.interpolateGreens).domain(range);
     function style(feature) {
     let attrValue = feature.properties[selectedAttribute];
     let color;
-    if(attrValue <=0 || typeof attrValue === "undefined") color = 'grey';
-    else color = color_sequential(attrValue)
+    
 
+
+    // if(attrValue <=0 || typeof attrValue === "undefined") color = 'grey';
+    // else color = colorvalue
+
+    // if(operators[op](attrValue,variable)){
+    //     return colorvalue
+    // }else return "grey";
+
+    if(operators[op](attrValue,variable)){
+        color = colorvalue
+    }
+    else{
+        color = "grey"
+    }
     return {
         fillColor:color,
         weight: 2,
@@ -298,6 +337,7 @@ function onEachFeature(feature, layer) {
    direction: "center",
    className: "my-labels"});
 }
+
 
 
     activatedLayer =  L.geoJSON(data,{style: style,onEachFeature:onEachFeature}).addTo(map);
@@ -418,8 +458,8 @@ function onEachFeature(feature, layer) {
 
     }
  // populate dropdown
- let household_description =  "https://raw.githubusercontent.com/debabrata-mallick/GISE-Tool-for-Visualization-of-Census-Data/main/household.json";
- let demography_description = "https://raw.githubusercontent.com/debabrata-mallick/GISE-Tool-for-Visualization-of-Census-Data/main/demography.json";
+ let household_description =  "https://gist.githubusercontent.com/AnimeshN/8e0a8154aaa413996d4adec1f20e6cb1/raw/e060c50f2bf82a90813085896288f5050631ea05/censusHousehold.json";
+ let demography_description = "https://gist.githubusercontent.com/AnimeshN/038d8ec1f102320c5f26bf70af7a63d9/raw/c39f8e84bcde27d172ca11aed3887e63b239b330/censusDemography.json";
 // household
  fetch(household_description)
   .then(response => response.json())
@@ -432,7 +472,9 @@ function onEachFeature(feature, layer) {
 
   function handleDropdownChangeHousehold(){
         selectedAttribute = document.getElementById("attr-dropdown-household").value;
-        renderLayer(currentData,selectedAttribute)
+        let variable = document.getElementById("variable");
+        variable.value = ""
+        renderLayer(currentData,selectedAttribute,'>',0,"grey")
   }
 
 
@@ -450,7 +492,9 @@ function onEachFeature(feature, layer) {
   function handleDropdownChangeDemography(){
       
       let selectedAttribute = document.getElementById("attr-dropdown-demography").value;
-        renderLayer(currentData,selectedAttribute)
+      let variable = document.getElementById("variable");
+        variable.value = ""
+        renderLayer(currentData,selectedAttribute,'>',0,"grey")
   }
 
 </script>
