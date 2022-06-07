@@ -61,7 +61,6 @@ right: -7px;
       
     </ul>
 
-</center>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,6 +80,9 @@ right: -7px;
     crossorigin=""></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="{% static 'html2pdf.js' %}"></script>
+    <script src="{% static 'dist/leaflet.browser.print.min.js' %}"></script>
+    
 
     <style>
        body {
@@ -115,6 +117,18 @@ background-color: transparent;
 border: transparent;
 box-shadow: none;
 }
+
+.myAttributeTable{
+  background-color: rgb(255, 255, 255);
+  text-align: left;
+  border-collapse: collapse;
+  overflow-y: scroll; 
+  max-height: 400px;
+  max-width: 100%;
+  /* position: fixed; */
+  bottom: 0;
+  right: 0;
+}
     </style>
 </head>
 <body>
@@ -134,7 +148,7 @@ box-shadow: none;
       <div class="row h-100">
         <div class="col-3">
             <div class="row h-100" style="background-color: rgba(137, 210, 133, 0.163);">
-                <div class="col" style="background-color: rgba(255, 94, 0, 0.205); overflow-y: scroll;">
+                <div class="col" style="background-color: rgba(255, 94, 0, 0.205); overflow-y: scroll;" >
                     <!-- <div class="row h-25  text-center 0-5"></div> -->
                         <div class="row  text-center mt-5">
                         <div>
@@ -181,6 +195,7 @@ box-shadow: none;
                     <div class="row mt-3 text-center"> 
                         <div>
                            <button onclick="downloadShapefile();">Download Shapefile</button>
+
                         </div>
                     </div>
                     <hr>
@@ -224,13 +239,17 @@ box-shadow: none;
                         <button onclick="executequery()">Execute query</button>
                     </div>
 
-
                     
+                    <div style="text-align: center;" class="mt-3">
+                        <button onclick="downloadtable()">Download table</button>
+                        <!-- <button onclick="generatePDF()">Download as PDF</button> -->
+
+                    </div>
 
                 </div>
           </div>
         </div>
-        <div class="col-9 bg-secondary">
+        <div class="col-9 bg-secondary" id="test">
           <div class='row h-100' id="map"></div>
           
         </div>
@@ -250,11 +269,11 @@ box-shadow: none;
 		tileSize: 512,
 		zoomOffset: -1
 	}).addTo(map);
-
+    
 // district - household 
    let url = "https://gisehub.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Households_District_Level_Census_0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326"
    let currentData = null;
-   let selectedAttribute;
+   let selectedAttribute,layer;
 
    var operators = {
         '>': function(a, b){ if(a>b) return true;else return false},
@@ -262,6 +281,117 @@ box-shadow: none;
         '>=': function(a, b){ if(a>=b) return true;else return false},
         '<=': function(a, b){ if(a<=b) return true;else return false}
 }
+
+    // adding control for table
+
+    var attribute_table = L.control();
+
+    let div = L.DomUtil.create('div', 'myAttributeTable'); // create a div with a class "info"
+    attribute_table.onAdd = function (map) {
+    div.innerHTML = 'Hover over a state';
+
+    return div;
+    };
+
+
+    function create_property_json(feature,selectedAttribute,heirarchy){
+    var json_props = [];
+    feature.forEach(feat => {
+        // let temp = {"dist_name" : feat.properties['dist_name']}
+        let temp = {[heirarchy] : feat.properties[heirarchy],[selectedAttribute] : feat.properties[selectedAttribute]}
+        json_props.push(temp);
+    });
+    return(json_props);
+    
+}
+    let table;
+    function updateTable(currentData,selectedAttribute,layer='district'){
+    div.innerHTML = '';
+    // console.log(currentData,selectedAttribute)
+
+    let heirarchy = (layer === "district")?"dist_name":"taluka_nam";
+
+    var propsJSON = create_property_json(currentData.features,selectedAttribute,heirarchy);
+    var col = [heirarchy,selectedAttribute];
+    // for (var i = 0; i < propsJSON.length; i++) {
+    //     for (var key in propsJSON[i]) {
+    //         if (col.indexOf(key) === -1) {
+    //             col.push(key);
+    //         }
+    //     }
+    // }
+
+    table = document.createElement("table");
+    var tr = table.insertRow(-1);                   
+    for (var i = 0; i < col.length; i++) {
+        var th = document.createElement("th");      
+        th.innerHTML = col[i];
+        tr.appendChild(th);
+    }
+    for (var i = 0; i < propsJSON.length; i++) {
+
+    tr = table.insertRow(-1);
+
+    for (var j = 0; j < col.length; j++) {
+        var tabCell = tr.insertCell(-1);
+        tabCell.innerHTML = propsJSON[i][col[j]];
+    }
+    }
+
+    div.appendChild(table);
+
+
+
+
+    }
+
+    function export_table_to_csv(html, filename) {
+	var csv = [];
+	var rows = html.querySelectorAll("table tr");
+	
+    for (var i = 0; i < rows.length; i++) {
+		var row = [], cols = rows[i].querySelectorAll("td, th");
+		
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+		csv.push(row.join(","));		
+	}
+
+    download_csv(csv.join("\n"), filename);
+}
+
+function download_csv(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV FILE
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // We have to create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Make sure that the link is not displayed
+    downloadLink.style.display = "none";
+
+    // Add the link to your DOM
+    document.body.appendChild(downloadLink);
+
+    // Lanzamos
+    downloadLink.click();
+}
+
+   function downloadtable(){
+       export_table_to_csv(table, "data.csv");
+   }
+    attribute_table.addTo(map);
+
 
    function fetchData(myurl){
     // map.spin(true,{lines: 9, length: 2, width: 20, scale: 60,radius: 70, color: "grey"});
@@ -274,7 +404,11 @@ box-shadow: none;
                 selectedAttribute = Object.keys(data.features[0].properties)[0] //random attribute name
 
             currentData = data;
-            renderLayer(data,selectedAttribute,'>',0,"grey")});
+            renderLayer(data,selectedAttribute,'>',0,"grey")
+            updateTable(currentData,selectedAttribute,layer)
+
+        
+        });
     // map.spin(false);
 
    }
@@ -344,7 +478,7 @@ function onEachFeature(feature, layer) {
    }
    fetchData(url)
     function handleClick(){
-        let layer = document.querySelector('input[name="layer"]:checked').value;
+        layer = document.querySelector('input[name="layer"]:checked').value;
         let type = document.querySelector('input[name="type"]:checked').value;
         let caste = document.querySelector('input[name="caste"]:checked').value;
         let region = document.querySelector('input[name="region"]:checked').value;
@@ -399,6 +533,7 @@ function onEachFeature(feature, layer) {
 
         fetchData(url)
         toggleDropdown(type);
+
 
     }
     
@@ -475,6 +610,7 @@ function onEachFeature(feature, layer) {
         let variable = document.getElementById("variable");
         variable.value = ""
         renderLayer(currentData,selectedAttribute,'>',0,"grey")
+        updateTable(currentData,selectedAttribute,layer)
   }
 
 
@@ -495,7 +631,18 @@ function onEachFeature(feature, layer) {
       let variable = document.getElementById("variable");
         variable.value = ""
         renderLayer(currentData,selectedAttribute,'>',0,"grey")
+        updateTable(currentData,selectedAttribute,layer)
+
   }
+  function generatePDF() {
+				// Choose the element that our invoice is rendered in.
+				const element = document.getElementById('test');
+                console.log(element)
+				// Choose the element and save the PDF for our user.
+				html2pdf().from(element).save();
+			}
+
+    var browserControl = L.control.browserPrint({documentTitle:"Census Map",title:'print Map',printModes:["Portrait", "Landscape", "Auto"]}).addTo(map);
 
 </script>
 </html>
