@@ -61,55 +61,56 @@ right: -7px;
       
     </ul>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Census-Map</title>
-    <link rel="stylesheet" href="https://spin.js.org/spin.css"/>
-    <script src="https://spin.js.org/spin.umd.js"></script>
+</center>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Census-Map</title>
+<link rel="stylesheet" href="https://spin.js.org/spin.css"/>
+<script src="https://spin.js.org/spin.umd.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-     
-    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-    crossorigin=""></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="{% static 'html2pdf.js' %}"></script>
-    <script src="{% static 'dist/leaflet.browser.print.min.js' %}"></script>
-    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+ 
 
-    <style>
-       body {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: 0;
-  /* overflow: hidden; */
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+crossorigin=""></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="{% static 'html2pdf.js' %}"></script>
+<script src="{% static 'dist/leaflet.browser.print.min.js' %}"></script>
+
+
+<style>
+   body {
+position: fixed;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+margin: 0;
+/* overflow: hidden; */
 }
 .full-height {
-  height: 100%;
+height: 100%;
 }
 
 .header {
-    height: 50px;
+height: 50px;
 }
 
 .leaflet-popup-content-wrapper {
-    background: rgba(0, 0, 0, 0.9);
-    color: #ffffff;
+background: rgba(0, 0, 0, 0.9);
+color: #ffffff;
 }
 
 .leaflet-popup-content{
-    font-weight: bold;
-    font-size: 1000px;
+font-weight: bold;
+font-size: 1000px;
 }
 
 .leaflet-tooltip.my-labels {
@@ -119,530 +120,581 @@ box-shadow: none;
 }
 
 .myAttributeTable{
-  background-color: rgb(255, 255, 255);
-  text-align: left;
-  border-collapse: collapse;
-  overflow-y: scroll; 
-  max-height: 400px;
-  max-width: 100%;
-  /* position: fixed; */
-  bottom: 0;
-  right: 0;
+background-color: rgb(255, 255, 255);
+text-align: left;
+border-collapse: collapse;
+overflow-y: scroll; 
+max-height: 400px;
+max-width: 100%;
+/* position: fixed; */
+bottom: 0;
+right: 0;
 }
-    </style>
+</style>
 </head>
 <body>
-    <!-- <div class="parent">
-        <div class="header">header</div>
-        <div class="container">
-            <div class="left">left</div>
-            <div class="righ">right</div>
-        </div>
-        <div class="footer">footer</div>
-    </div> -->
+<!-- <div class="parent">
+    <div class="header">header</div>
+    <div class="container">
+        <div class="left">left</div>
+        <div class="righ">right</div>
+    </div>
+    <div class="footer">footer</div>
+</div> -->
 
 
-    <!-- test -->
-    <div class="container-fluid full-height">
-        <!-- <div class="row header bg-primary"></div> -->
-      <div class="row h-100">
-        <div class="col-3">
-            <div class="row h-100" style="background-color: rgba(137, 210, 133, 0.163);">
-                <div class="col" style="background-color: rgba(255, 94, 0, 0.205); overflow-y: scroll;" >
-                    <!-- <div class="row h-25  text-center 0-5"></div> -->
-                        <div class="row  text-center mt-5">
-                        <div>
-                            <p>Please select Layer</p>
-                            <input type="radio" id="dist" name="layer" value="district"  checked  onchange="handleClick();"><label>District</label><br>
-                            <input type="radio" id="taluka" name="layer" value="taluka"  onclick="handleClick();"><label >Taluka</label><br>
+<!-- test -->
+<div class="container-fluid full-height">
+    <!-- <div class="row header bg-primary"></div> -->
+  <div class="row h-100">
+    <div class="col-3">
+        <div class="row h-100" style="background-color: rgba(137, 210, 133, 0.163);">
+            <div class="col" style="background-color: rgba(255, 94, 0, 0.205); overflow-y: scroll; height: 100vh;" >
+                <!-- <div class="row h-25  text-center 0-5"></div> -->
+                    <div class="row  text-center mt-5">
+                    <div>
+                        <p>Please select Layer</p>
+                        <input type="radio" id="dist" name="layer" value="district"  checked  onchange="handleClick();"><label>District</label><br>
+                        <input type="radio" id="taluka" name="layer" value="taluka"  onclick="handleClick();"><label >Taluka</label><br>
+                        <input type="radio" id="village" name="layer" value="village"  onclick="handleClick();"><label >Village</label><br>
+                    </div>
+                </div>
+                <hr>
+                <div class="row text-center mt-5"> 
+                    <div>
+                        <p>Please select Census Data</p>
+                        <input type="radio" id="household" name="type" value="household" checked  onchange="handleClick();"><label >Household</label><br>
+                        <input type="radio" id="demography" name="type" value="demography"  onclick="handleClick();"><label >Demography</label><br>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- general sc st -->
+                <div class="row text-center mt-5"> 
+                    <div>
+                        <p>Please select Caste</p>
+                        <input type="radio" id="general" name="caste" value="general" checked  onchange="handleClick();"><label >General</label><br>
+                        <div id="sc-st">
+                            <input type="radio" id="sc" name="caste" value="sc"  onclick="handleClick();"><label >SC</label><br>
+                            <input type="radio" id="st" name="caste" value="st"  onclick="handleClick();"><label >ST</label><br>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row text-center mt-5"> 
-                        <div>
-                            <p>Please select Census Data</p>
-                            <input type="radio" id="household" name="type" value="household" checked  onchange="handleClick();"><label >Household</label><br>
-                            <input type="radio" id="demography" name="type" value="demography"  onclick="handleClick();"><label >Demography</label><br>
+                </div>
+                <hr>
+
+                <!-- rural urban total -->
+                <div class="row  text-center mt-5"> 
+                    <div>
+                        <p>Please select Region</p>
+                        <input type="radio" id="total" name="region" value="total" checked  onchange="handleClick();"><label >Total</label><br>
+                        <div id = "rural-urban">
+                            <input type="radio" id="rural" name="region" value="rural"  onclick="handleClick();"><label >Rural</label><br>
+                            <input type="radio" id="urban" name="region" value="urban"  onclick="handleClick();"><label >Urban</label><br>
                         </div>
                     </div>
-                    <hr>
+                </div>
 
-                    <!-- general sc st -->
-                    <div class="row text-center mt-5"> 
-                        <div>
-                            <p>Please select Caste</p>
-                            <input type="radio" id="general" name="caste" value="general" checked  onchange="handleClick();"><label >General</label><br>
-                            <div id="sc-st">
-                                <input type="radio" id="sc" name="caste" value="sc"  onclick="handleClick();"><label >SC</label><br>
-                                <input type="radio" id="st" name="caste" value="st"  onclick="handleClick();"><label >ST</label><br>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <!-- rural urban total -->
-                    <div class="row  text-center mt-5"> 
-                        <div>
-                            <p>Please select Region</p>
-                            <input type="radio" id="total" name="region" value="total" checked  onchange="handleClick();"><label >Total</label><br>
-                            <div id = "rural-urban">
-                                <input type="radio" id="rural" name="region" value="rural"  onclick="handleClick();"><label >Rural</label><br>
-                                <input type="radio" id="urban" name="region" value="urban"  onclick="handleClick();"><label >Urban</label><br>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3 text-center"> 
-                        <div>
-                           <button onclick="downloadShapefile();">Download Shapefile</button>
-
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row text-center" id="household-dropdown" > 
-                        <div >
-                            Select Household Census Attribute:
-                            <select  onchange="handleDropdownChangeHousehold()" id="attr-dropdown-household"></select>
-                        </div>
-                       
-                    </div>
-                    <div class="row text-center" id="demography-dropdown"> 
-                        <div >
-                            Select Demography Census Attribute:
-                            <select id="attr-dropdown-demography" onchange="handleDropdownChangeDemography()"  id="attr-dropdown-demography"></select>
-                        </div>
-                       
-                    </div>
-
-                    <div class="row  text-center" > 
-                        <div id="show-range"> Range</div>
-
-                        <div id="show-selected-attribute"> Selected Attribute</div>
-                       
-                    </div>
-                    <div style="text-align: center;"> 
-                        Select operator
-                        <select id="op">
-                            <option value=">">></option>
-                            <option value="<"><</option>
-                            <option value="<="><=</option>
-                            <option value=">=">>=</option>
-                            <!-- <option value="<>"><></option> -->
-                        </select>
-                        <br>
-                        <label >Select Value:</label>
-                        <input type="number" id="variable" name="variable">
-                        <br>
-                        <label for="">Select color:</label>
-                        <input type="color" id="color" name="color" value="#ff0000">
-                        <br>
-                        <button onclick="executequery()">Execute query</button>
-                    </div>
-
-                    
-                    <div style="text-align: center;" class="mt-3">
-                        <button onclick="downloadtable()">Download table</button>
-                        <!-- <button onclick="generatePDF()">Download as PDF</button> -->
+                <div class="row mt-3 text-center"> 
+                    <div>
+                       <button onclick="downloadShapefile();">Download Shapefile</button>
 
                     </div>
+                </div>
+                <hr>
+                <div class="row text-center" id="household-dropdown" > 
+                    <div >
+                        Select Household Census Attribute:
+                        <select  onchange="handleDropdownChangeHousehold()" id="attr-dropdown-household"></select>
+                    </div>
+                   
+                </div>
+                <div class="row text-center" id="demography-dropdown"> 
+                    <div >
+                        Select Demography Census Attribute:
+                        <select id="attr-dropdown-demography" onchange="handleDropdownChangeDemography()"  id="attr-dropdown-demography"></select>
+                    </div>
+                   
+                </div>
+
+                <div class="row  text-center" > 
+                    <div id="show-range"> Range</div>
+
+                    <div id="show-selected-attribute"> Selected Attribute</div>
+                   
+                </div>
+                <div style="text-align: center;"> 
+                    Select operator
+                    <select id="op">
+                        <option value=">">></option>
+                        <option value="<"><</option>
+                        <option value="<="><=</option>
+                        <option value=">=">>=</option>
+                        <!-- <option value="<>"><></option> -->
+                    </select>
+                    <br>
+                    <label >Select Value:</label>
+                    <input type="number" id="variable" name="variable">
+                    <br>
+                    <label for="">Select color:</label>
+                    <input type="color" id="color" name="color" value="#ff0000">
+                    <br>
+                    <button onclick="executequery()">Execute query</button>
+                </div>
+
+                
+                <div style="text-align: center;" class="mt-3">
+                    <button onclick="downloadtable()">Download table</button>
+                    <!-- <button onclick="generatePDF()">Download as PDF</button> -->
 
                 </div>
-          </div>
-        </div>
-        <div class="col-9 bg-secondary" id="test">
-          <div class='row h-100' id="map"></div>
-          
-        </div>
-       
+
+            </div>
       </div>
     </div>
+    <div class="col-9 bg-secondary" id="test">
+      <div class='row h-100' id="map"></div>
+      
+    </div>
+   
+  </div>
+</div>
 </body>
 <script>
-    var map; 
-    map = L.map('map').setView([19.0760, 75.8777], 7);
-    let activatedLayer = null;
-    var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/streets-v11',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(map);
-    
+let geonodeDomain = "{{geonode_domain}}"
+var map; 
+map = L.map('map').setView([19.0760, 75.8777], 7);
+let activatedLayer = null;
+var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1
+}).addTo(map);
+
 // district - household 
-   let url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Households_District_Level_Census_0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx"
-   let currentData = null;
-   let selectedAttribute,layer;
+let url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Total_Demo0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh"
+let currentData = null;
+let selectedAttribute,layer;
 
-   var operators = {
-        '>': function(a, b){ if(a>b) return true;else return false},
-        '<': function(a, b){ if(a<b) return true;else return false},
-        '>=': function(a, b){ if(a>=b) return true;else return false},
-        '<=': function(a, b){ if(a<=b) return true;else return false}
+var operators = {
+    '>': function(a, b){ if(a>b) return true;else return false},
+    '<': function(a, b){ if(a<b) return true;else return false},
+    '>=': function(a, b){ if(a>=b) return true;else return false},
+    '<=': function(a, b){ if(a<=b) return true;else return false}
 }
 
-    // adding control for table
+// adding control for table
 
-    var attribute_table = L.control();
+var attribute_table = L.control();
 
-    let div = L.DomUtil.create('div', 'myAttributeTable'); // create a div with a class "info"
-    attribute_table.onAdd = function (map) {
-    div.innerHTML = 'Hover over a state';
+let div = L.DomUtil.create('div', 'myAttributeTable'); // create a div with a class "info"
+attribute_table.onAdd = function (map) {
+div.innerHTML = 'Hover over a state';
 
-    return div;
-    };
+return div;
+};
 
 
-    function create_property_json(feature,selectedAttribute,heirarchy){
-    var json_props = [];
-    feature.forEach(feat => {
-        // let temp = {"dist_name" : feat.properties['dist_name']}
-        let temp = {[heirarchy] : feat.properties[heirarchy],[selectedAttribute] : feat.properties[selectedAttribute]}
-        json_props.push(temp);
-    });
-    return(json_props);
+function create_property_json(feature,selectedAttribute,heirarchy){
+var json_props = [];
+feature.forEach(feat => {
+    // let temp = {"dist_name" : feat.properties['dist_name']}
+    let temp = {[heirarchy] : feat.properties[heirarchy],[selectedAttribute] : feat.properties[selectedAttribute]}
+    json_props.push(temp);
+});
+return(json_props);
+
+}
+let table;
+function updateTable(currentData,selectedAttribute,layer='district'){
+div.innerHTML = '';
+// console.log(currentData,selectedAttribute)
+
+let heirarchy = (layer === "district")?"dist_name":"taluka_nam";
+
+var propsJSON = create_property_json(currentData.features,selectedAttribute,heirarchy);
+var col = [heirarchy,selectedAttribute];
+// for (var i = 0; i < propsJSON.length; i++) {
+//     for (var key in propsJSON[i]) {
+//         if (col.indexOf(key) === -1) {
+//             col.push(key);
+//         }
+//     }
+// }
+
+table = document.createElement("table");
+var tr = table.insertRow(-1);                   
+for (var i = 0; i < col.length; i++) {
+    var th = document.createElement("th");      
+    th.innerHTML = col[i];
+    tr.appendChild(th);
+}
+for (var i = 0; i < propsJSON.length; i++) {
+
+tr = table.insertRow(-1);
+
+for (var j = 0; j < col.length; j++) {
+    var tabCell = tr.insertCell(-1);
+    tabCell.innerHTML = propsJSON[i][col[j]];
+}
+}
+
+div.appendChild(table);
+
+
+
+
+}
+
+function export_table_to_csv(html, filename) {
+var csv = [];
+var rows = html.querySelectorAll("table tr");
+
+for (var i = 0; i < rows.length; i++) {
+    var row = [], cols = rows[i].querySelectorAll("td, th");
     
+    for (var j = 0; j < cols.length; j++) 
+        row.push(cols[j].innerText);
+    
+    csv.push(row.join(","));		
 }
-    let table;
-    function updateTable(currentData,selectedAttribute,layer='district'){
-    div.innerHTML = '';
-    // console.log(currentData,selectedAttribute)
 
-    let heirarchy = (layer === "district")?"dist_name":"taluka_nam";
-
-    var propsJSON = create_property_json(currentData.features,selectedAttribute,heirarchy);
-    var col = [heirarchy,selectedAttribute];
-    // for (var i = 0; i < propsJSON.length; i++) {
-    //     for (var key in propsJSON[i]) {
-    //         if (col.indexOf(key) === -1) {
-    //             col.push(key);
-    //         }
-    //     }
-    // }
-
-    table = document.createElement("table");
-    var tr = table.insertRow(-1);                   
-    for (var i = 0; i < col.length; i++) {
-        var th = document.createElement("th");      
-        th.innerHTML = col[i];
-        tr.appendChild(th);
-    }
-    for (var i = 0; i < propsJSON.length; i++) {
-
-    tr = table.insertRow(-1);
-
-    for (var j = 0; j < col.length; j++) {
-        var tabCell = tr.insertCell(-1);
-        tabCell.innerHTML = propsJSON[i][col[j]];
-    }
-    }
-
-    div.appendChild(table);
-
-
-
-
-    }
-
-    function export_table_to_csv(html, filename) {
-	var csv = [];
-	var rows = html.querySelectorAll("table tr");
-	
-    for (var i = 0; i < rows.length; i++) {
-		var row = [], cols = rows[i].querySelectorAll("td, th");
-		
-        for (var j = 0; j < cols.length; j++) 
-            row.push(cols[j].innerText);
-        
-		csv.push(row.join(","));		
-	}
-
-    download_csv(csv.join("\n"), filename);
+download_csv(csv.join("\n"), filename);
 }
 
 function download_csv(csv, filename) {
-    var csvFile;
-    var downloadLink;
+var csvFile;
+var downloadLink;
 
-    // CSV FILE
-    csvFile = new Blob([csv], {type: "text/csv"});
+// CSV FILE
+csvFile = new Blob([csv], {type: "text/csv"});
 
-    // Download link
-    downloadLink = document.createElement("a");
+// Download link
+downloadLink = document.createElement("a");
 
-    // File name
-    downloadLink.download = filename;
+// File name
+downloadLink.download = filename;
 
-    // We have to create a link to the file
-    downloadLink.href = window.URL.createObjectURL(csvFile);
+// We have to create a link to the file
+downloadLink.href = window.URL.createObjectURL(csvFile);
 
-    // Make sure that the link is not displayed
-    downloadLink.style.display = "none";
+// Make sure that the link is not displayed
+downloadLink.style.display = "none";
 
-    // Add the link to your DOM
-    document.body.appendChild(downloadLink);
+// Add the link to your DOM
+document.body.appendChild(downloadLink);
 
-    // Lanzamos
-    downloadLink.click();
+// Lanzamos
+downloadLink.click();
 }
 
-   function downloadtable(){
-       export_table_to_csv(table, "data.csv");
-   }
-    attribute_table.addTo(map);
-
-
-   function fetchData(myurl){
-    // map.spin(true,{lines: 9, length: 2, width: 20, scale: 60,radius: 70, color: "grey"});
-    let variable = document.getElementById("variable");
-        variable.value = ""
-    fetch(myurl)
-        .then(response => response.json())
-        .then(data => {
-            if(typeof selectedAttribute === 'undefined')
-                selectedAttribute = Object.keys(data.features[0].properties)[0] //random attribute name
-
-            currentData = data;
-            renderLayer(data,selectedAttribute,'>',0,"grey")
-            updateTable(currentData,selectedAttribute,layer)
-
-        
-        });
-    // map.spin(false);
-
-   }
-
-   function executequery(){
-        let op = document.getElementById('op').value
-        let colr = document.getElementById('color').value
-        let variable= document.getElementById('variable').value
-        renderLayer(currentData,selectedAttribute,op,variable,colr)
+function downloadtable(){
+   export_table_to_csv(table, "data.csv");
 }
-
-   function renderLayer(data,selectedAttribute,op,variable,colorvalue){
-    if(activatedLayer){
-        map.removeLayer(activatedLayer);
-        
-    }
-
-    function getRange(data){
-        let range = d3.extent(data.map(d => d.properties[selectedAttribute]))
-        return range
-    }
-    let range = getRange(data.features)
-    document.getElementById("show-range").innerHTML = "Range: "+range[0] + "-" +range[1];
-    document.getElementById("show-selected-attribute").innerHTML = "Selected Attribute:" + selectedAttribute;
+attribute_table.addTo(map);
 
 
-    // var color_sequential = d3.scaleSequential(d3.interpolateGreens).domain(range);
-    function style(feature) {
-    let attrValue = feature.properties[selectedAttribute];
-    let color;
+function fetchData(myurl){
+// map.spin(true,{lines: 9, length: 2, width: 20, scale: 60,radius: 70, color: "grey"});
+let variable = document.getElementById("variable");
+    variable.value = ""
+fetch(myurl)
+    .then(response => response.json())
+    .then(data => {
+        if(typeof selectedAttribute === 'undefined')
+            selectedAttribute = Object.keys(data.features[0].properties)[0] //random attribute name
+
+        currentData = data;
+        renderLayer(data,selectedAttribute,'>',0,"grey")
+        updateTable(currentData,selectedAttribute,layer)
+
     
+    });
+// map.spin(false);
+
+}
+
+function executequery(){
+    let op = document.getElementById('op').value
+    let colr = document.getElementById('color').value
+    let variable= document.getElementById('variable').value
+    renderLayer(currentData,selectedAttribute,op,variable,colr)
+}
+
+function renderLayer(data,selectedAttribute,op,variable,colorvalue){
+if(activatedLayer){
+    map.removeLayer(activatedLayer);
+    
+}
+
+function getRange(data){
+    let range = d3.extent(data.map(d => d.properties[selectedAttribute]))
+    return range
+}
+let range = getRange(data.features)
+document.getElementById("show-range").innerHTML = "Range: "+range[0] + "-" +range[1];
+document.getElementById("show-selected-attribute").innerHTML = "Selected Attribute:" + selectedAttribute;
 
 
-    // if(attrValue <=0 || typeof attrValue === "undefined") color = 'grey';
-    // else color = colorvalue
+// var color_sequential = d3.scaleSequential(d3.interpolateGreens).domain(range);
+function style(feature) {
+let attrValue = feature.properties[selectedAttribute];
+let color;
 
-    // if(operators[op](attrValue,variable)){
-    //     return colorvalue
-    // }else return "grey";
 
-    if(operators[op](attrValue,variable)){
-        color = colorvalue
-    }
-    else{
-        color = "grey"
-    }
-    return {
-        fillColor:color,
-        weight: 2,
-        opacity: 1,
-        color: 'black',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
+
+// if(attrValue <=0 || typeof attrValue === "undefined") color = 'grey';
+// else color = colorvalue
+
+// if(operators[op](attrValue,variable)){
+//     return colorvalue
+// }else return "grey";
+
+if(operators[op](attrValue,variable)){
+    color = colorvalue
+}
+else{
+    color = "grey"
+}
+return {
+    fillColor:color,
+    weight: 2,
+    opacity: 1,
+    color: 'black',
+    dashArray: '3',
+    fillOpacity: 0.7
+};
 }
 
 function onEachFeature(feature, layer) {
 
-    layer.bindTooltip("<div style = 'text-transform: capitalize'>"+feature.properties[selectedAttribute]+"</div>",{permanent: true, 
-   direction: "center",
-   className: "my-labels"});
+layer.bindTooltip("<div style = 'text-transform: capitalize'>"+feature.properties[selectedAttribute]+"</div>",{permanent: true, 
+direction: "center",
+className: "my-labels"});
 }
 
 
 
-    activatedLayer =  L.geoJSON(data,{style: style,onEachFeature:onEachFeature}).addTo(map);
-   }
-   fetchData(url)
-    function handleClick(){
-        layer = document.querySelector('input[name="layer"]:checked').value;
-        let type = document.querySelector('input[name="type"]:checked').value;
-        let caste = document.querySelector('input[name="caste"]:checked').value;
-        let region = document.querySelector('input[name="region"]:checked').value;
+activatedLayer =  L.geoJSON(data,{style: style,onEachFeature:onEachFeature}).addTo(map);
+}
+fetchData(url)
+function handleClick(){
+    layer = document.querySelector('input[name="layer"]:checked').value;
+    let type = document.querySelector('input[name="type"]:checked').value;
+    let caste = document.querySelector('input[name="caste"]:checked').value;
+    let region = document.querySelector('input[name="region"]:checked').value;
 
-        let scST = document.getElementById("sc-st");
-        let ruralUrban = document.getElementById("rural-urban");
+    let scST = document.getElementById("sc-st");
+    let ruralUrban = document.getElementById("rural-urban");
 
-        if(layer === 'taluka' && type === 'household'){
-            if(!document.getElementById('total').checked){
-                document.getElementById('total').checked = true;
-                handleClick() // hack
-            }
-            ruralUrban.style.display = "none";
-        }else if(layer === 'taluka' && type === 'demography'){
-            if(!document.getElementById('total').checked && !document.getElementById('general').checked){
-                document.getElementById('general').checked = true;
-                document.getElementById('total').checked = true;
-                handleClick() // hack
-            }
-            scST.style.display = "none";
-            ruralUrban.style.display = "none";
-        }else if(layer === 'district' && type === 'demography'){
-            document.getElementById('general').checked = true;
-            document.getElementById('total').checked = true;
-            scST.style.display = "none";
-            ruralUrban.style.display = "none";
-        }else if(layer === 'district' && type === 'household'){
-            scST.style.display = "block";
-            ruralUrban.style.display = "block";
-        }
+    // if(layer === 'taluka' && type === 'household'){
+    //     // if(!document.getElementById('total').checked){
+    //         // document.getElementById('total').checked = true;
+    //         // handleClick() // hack
+    //     // }
+    //     // ruralUrban.style.display = "none";
+    // }else if(layer === 'taluka' && type === 'demography'){
+    //     // if(!document.getElementById('total').checked && !document.getElementById('general').checked){
+    //         // document.getElementById('general').checked = true;
+    //         // document.getElementById('total').checked = true;
+    //         // handleClick() // hack
+    //     // }
+    //     // scST.style.display = "none";
+    //     // ruralUrban.style.display = "none";
+    // }else if(layer === 'district' && type === 'demography'){
+    //     // document.getElementById('general').checked = true;
+    //     // document.getElementById('total').checked = true;
+    //     // scST.style.display = "none";
+    //     // ruralUrban.style.display = "none";
+    // }else if(layer === 'district' && type === 'household'){
+    //     // scST.style.display = "block";
+    //     // ruralUrban.style.display = "block";
+    // }
 
-        let url = "";
-        if(layer==='district' && type === 'demography' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Total_Demo&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Households_District_Level_Census_0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'general' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Rural_Hous&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'general' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Urban_Hous&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        
-        else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_To&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ru&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ur&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        
-        
-        else if(layer==='district' && type === 'household' && caste === 'st' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_To&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'st' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ru&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'st' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ur&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
+    if(layer === "village"){
+        var wmsLayer = L.tileLayer.wms('https://maha.geonode.communitygis.in/geoserver/wms?', {
+            format: 'image/png',
+            transparent: true,
+            layers: 'geonode:Demographic_Village_Level_Total'
+        }).addTo(map);
+    }   
 
-        else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_Taluka_Level_Total_Demogr&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharastra_Households_Taluka_Lavel_Cencus_201&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
+    if(type=='demography') scST.style.display = "none";
+    else scST.style.display = "block";
 
-        else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_Taluka_Level_Tota&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_Taluka_Level_Tota&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
+    let url = "";
+    if(layer==='district' && type === 'demography' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Total_Demo0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'demography' && caste === 'general' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ADistrict_Level_Demographics_Rural&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'demography' && caste === 'general' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ADistrict_Level_Demographics_Urban&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
 
-        fetchData(url)
-        toggleDropdown(type);
-
-
-    }
     
-    let householdDiv = document.getElementById("household-dropdown");
-    let demographyDiv = element = document.getElementById("demography-dropdown");
-    householdDiv.style.display = "block";
-    demographyDiv.style.display = "none";
-    function toggleDropdown(selectedType){
+    else if(layer==='district' && type === 'household' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Total_Hous&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'general' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Rural_Hous0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'general' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Urban_Hous0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    
+    else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_To0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ru0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ur0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    
+    else if(layer==='district' && type === 'household' && caste === 'st' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_To0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'st' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ru0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'st' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ur0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
 
-        if(selectedType === 'household') {
-            householdDiv.style.display = "block";
-            demographyDiv.style.display = "none";
-        }
-        else if(selectedType === 'demography') {
-            householdDiv.style.display = "none";
-            demographyDiv.style.display = "block";
-        }
+    else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_Taluka_Level_Total_Demogr0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ATaluka_Level_Demographics_Rural&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ATaluka_Level_Demographics_Urban&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+
+    else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Taluka_Level_Total_Households_Ame&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AHouseholds_General_Taluka_Lavel_Rural&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AHouseholds_General_Taluka_Lavel_Urban&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+
+    else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_Taluka_Level_Tota0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ASC_Taluka_Lavel_Rural&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ASC_Taluka_Lavel_Urban&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+
+    else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'total') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_Taluka_Level_Tota0&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'rural') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AST_Taluka_Lavel_Rural&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'urban') url = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AST_Taluka_Lavel_Urban&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+
+
+    fetchData(url)
+    toggleDropdown(type);
+
+
+}
+
+let householdDiv = document.getElementById("household-dropdown");
+let demographyDiv = element = document.getElementById("demography-dropdown");
+householdDiv.style.display = "block";
+demographyDiv.style.display = "none";
+function toggleDropdown(selectedType){
+
+    if(selectedType === 'household') {
+        householdDiv.style.display = "block";
+        demographyDiv.style.display = "none";
     }
-    function downloadURI(uri, name) {
-        var link = document.createElement("a");
-        link.download = name;
-        link.href = uri;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        delete link;
+    else if(selectedType === 'demography') {
+        householdDiv.style.display = "none";
+        demographyDiv.style.display = "block";
     }
+}
+function downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    delete link;
+}
 
-    function downloadShapefile(){
-        let layer = document.querySelector('input[name="layer"]:checked').value;
-        let type = document.querySelector('input[name="type"]:checked').value;
-        let caste = document.querySelector('input[name="caste"]:checked').value;
-        let region = document.querySelector('input[name="region"]:checked').value;
+function downloadShapefile(){
+    let layer = document.querySelector('input[name="layer"]:checked').value;
+    let type = document.querySelector('input[name="type"]:checked').value;
+    let caste = document.querySelector('input[name="caste"]:checked').value;
+    let region = document.querySelector('input[name="region"]:checked').value;
 
-        let uri = "";
-        if(layer==='district' && type === 'demography' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Total_Demo&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Households_District_Level_Census_0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'general' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Rural_Hous&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'general' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Urban_Hous&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        
-        
-        else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_To&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ru&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ur&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
+    let uri = "";
+    if(layer==='district' && type === 'demography' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Total_Demo0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'demography' && caste === 'general' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ADistrict_Level_Demographics_Rural&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'demography' && caste === 'general' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ADistrict_Level_Demographics_Urban&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
 
-        else if(layer==='district' && type === 'household' && caste === 'st' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_To&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'st' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ru&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='district' && type === 'household' && caste === 'st' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ur&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
+    else if(layer==='district' && type === 'household' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Total_Hous&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'general' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Rural_Hous0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'general' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_District_Level_Urban_Hous0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    
+    else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_To0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ru0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'sc' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_District_Level_Ur0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    
+    else if(layer==='district' && type === 'household' && caste === 'st' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_To0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'st' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ru0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='district' && type === 'household' && caste === 'st' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_District_Level_Ur0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
 
-        else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_Taluka_Level_Total_Demogr&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharastra_Households_Taluka_Lavel_Cencus_201&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
+    else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_General_Taluka_Level_Total_Demogr0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ATaluka_Level_Demographics_Rural&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'demography' && caste === 'general' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ATaluka_Level_Demographics_Urban&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    
+    else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_Taluka_Level_Tota0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AHouseholds_General_Taluka_Lavel_Rural&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'general' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AHouseholds_General_Taluka_Lavel_Urban&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
 
-        else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_Taluka_Level_Tota&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
-        else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_Taluka_Level_Tota&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=X2MYeJZ3NdyKgpDWeUDbJ5ylYeV8tx";
+    else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Caste_Taluka_Level_Tota0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ASC_Taluka_Lavel_Rural&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'sc' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ASC_Taluka_Lavel_Urban&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    
+    else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AMaharashtra_Scheduled_Tribe_Taluka_Level_Tota0&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AST_Taluka_Lavel_Rural&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='taluka' && type === 'household' && caste === 'st' && region === 'urban') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AST_Taluka_Lavel_Urban&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
 
-        downloadURI(uri, "shapefile.shp");
 
-    }
- // populate dropdown
- let household_description =  "https://raw.githubusercontent.com/debabrata-mallick/GISE-Tool-for-Visualization-of-Census-Data/main/household.json";
- let demography_description = "https://raw.githubusercontent.com/debabrata-mallick/GISE-Tool-for-Visualization-of-Census-Data/main/demography.json";
+
+
+
+
+    else if(layer==='village' && type === 'demography' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ADemographic_Village_Level_Total&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='village' && type === 'demography' && caste === 'general' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3ADemographic_Village_Level_Total&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+
+    else if(layer==='village' && type === 'household' && caste === 'general' && region === 'total') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AHouseholds_Village_Level_Total&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+    else if(layer==='village' && type === 'household' && caste === 'general' && region === 'rural') uri = "https://maha.geonode.communitygis.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3AHouseholds_Village_Level_Total&outputFormat=SHAPE-ZIP&srs=EPSG%3A4326&format_options=charset%3AUTF-8&access_token=FS1sGMwrAEz4FuOmXUDMGTGAcuXxEh";
+
+
+    downloadURI(uri, "shapefile.shp");
+
+}
+// populate dropdown
+let household_description =  "https://gist.githubusercontent.com/AnimeshN/8e0a8154aaa413996d4adec1f20e6cb1/raw/e060c50f2bf82a90813085896288f5050631ea05/censusHousehold.json";
+let demography_description = "https://gist.githubusercontent.com/AnimeshN/038d8ec1f102320c5f26bf70af7a63d9/raw/c39f8e84bcde27d172ca11aed3887e63b239b330/censusDemography.json";
 // household
- fetch(household_description)
-  .then(response => response.json())
-  .then(attr_list => {
-    var select = document.getElementById("attr-dropdown-household");
-    attr_list.map(d =>{
-        select.options[select.options.length] = new Option(d.full_description,d.short_form);
-      })
-  });
+fetch(household_description)
+.then(response => response.json())
+.then(attr_list => {
+var select = document.getElementById("attr-dropdown-household");
+attr_list.map(d =>{
+    select.options[select.options.length] = new Option(d.full_description,d.short_form);
+  })
+});
 
-  function handleDropdownChangeHousehold(){
-        selectedAttribute = document.getElementById("attr-dropdown-household").value;
-        let variable = document.getElementById("variable");
-        variable.value = ""
-        renderLayer(currentData,selectedAttribute,'>',0,"grey")
-        updateTable(currentData,selectedAttribute,layer)
-  }
+function handleDropdownChangeHousehold(){
+    selectedAttribute = document.getElementById("attr-dropdown-household").value;
+    let variable = document.getElementById("variable");
+    variable.value = ""
+    renderLayer(currentData,selectedAttribute,'>',0,"grey")
+    updateTable(currentData,selectedAttribute,layer)
+}
 
 
-  // demography
+// demography
 
-  fetch(demography_description)
-  .then(response => response.json())
-  .then(attr_list => {
-    var select = document.getElementById("attr-dropdown-demography");
-    attr_list.map(d =>{
-        select.options[select.options.length] = new Option(d.full_description,d.short_form);
-      })
-  });
+fetch(demography_description)
+.then(response => response.json())
+.then(attr_list => {
+var select = document.getElementById("attr-dropdown-demography");
+attr_list.map(d =>{
+    select.options[select.options.length] = new Option(d.full_description,d.short_form);
+  })
+});
 
-  function handleDropdownChangeDemography(){
-      
-      let selectedAttribute = document.getElementById("attr-dropdown-demography").value;
-      let variable = document.getElementById("variable");
-        variable.value = ""
-        renderLayer(currentData,selectedAttribute,'>',0,"grey")
-        updateTable(currentData,selectedAttribute,layer)
+function handleDropdownChangeDemography(){
+  
+  let selectedAttribute = document.getElementById("attr-dropdown-demography").value;
+  let variable = document.getElementById("variable");
+    variable.value = ""
+    renderLayer(currentData,selectedAttribute,'>',0,"grey")
+    updateTable(currentData,selectedAttribute,layer)
 
-  }
-  function generatePDF() {
-				// Choose the element that our invoice is rendered in.
-				const element = document.getElementById('test');
-                console.log(element)
-				// Choose the element and save the PDF for our user.
-				html2pdf().from(element).save();
-			}
+}
+function generatePDF() {
+            // Choose the element that our invoice is rendered in.
+            const element = document.getElementById('test');
+            console.log(element)
+            // Choose the element and save the PDF for our user.
+            html2pdf().from(element).save();
+        }
 
-    var browserControl = L.control.browserPrint({documentTitle:"Census Map",title:'print Map',printModes:["Portrait", "Landscape", "Auto"]}).addTo(map);
+var browserControl = L.control.browserPrint({documentTitle:"Census Map",title:'print Map',printModes:["Portrait", "Landscape", "Auto"]}).addTo(map);
 
 </script>
 </html>
